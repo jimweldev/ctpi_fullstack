@@ -6,14 +6,14 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 // require routes
-const authRoute = require("./routes/authRoute.js");
-const userRoute = require("./routes/userRoute.js");
-const seriesRoute = require("./routes/seriesRoute.js");
-const sermonRoute = require("./routes/sermonRoute.js");
-const openingRoute = require("./routes/openingRoute.js");
-const closingRoute = require("./routes/closingRoute.js");
-const pointRoute = require("./routes/pointRoute.js");
-const verseRoute = require("./routes/verseRoute.js");
+const authRoute = require("./app/routes/authRoute.js");
+const userRoute = require("./app/routes/userRoute.js");
+const seriesRoute = require("./app/routes/seriesRoute.js");
+const sermonRoute = require("./app/routes/sermonRoute.js");
+const openingRoute = require("./app/routes/openingRoute.js");
+const closingRoute = require("./app/routes/closingRoute.js");
+const pointRoute = require("./app/routes/pointRoute.js");
+const verseRoute = require("./app/routes/verseRoute.js");
 
 // express app
 const app = express();
