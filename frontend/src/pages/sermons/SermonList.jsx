@@ -34,7 +34,7 @@ const SermonList = () => {
   } = useQuery({
     queryKey: ["series"],
     queryFn: () =>
-      privateInstance.get(`api/series`).then((res) =>
+      privateInstance.get(`/api/series`).then((res) =>
         res.data.records.map((item) => ({
           value: item._id,
           label: item.title,
@@ -53,7 +53,7 @@ const SermonList = () => {
     queryFn: () =>
       privateInstance
         .get(
-          `api/sermons/paginated?page=${page}&limit=${limit}&sort=${sort}&search=${debouncedSearchTerm}`
+          `/api/sermons/paginated?page=${page}&limit=${limit}&sort=${sort}&search=${debouncedSearchTerm}`
         )
         .then((res) => res.data),
     keepPreviousData: true,
@@ -84,7 +84,7 @@ const SermonList = () => {
     };
 
     privateInstance
-      .post(`api/sermons`, modifiedData)
+      .post(`/api/sermons`, modifiedData)
       .then(() => {
         toast.success("Successfully created sermon.");
         queryClient.invalidateQueries([
@@ -120,7 +120,7 @@ const SermonList = () => {
     };
 
     privateInstance
-      .patch(`api/sermons/${data._id}`, modifiedData)
+      .patch(`/api/sermons/${data._id}`, modifiedData)
       .then(() => {
         toast.success("Successfully updated sermon opening.");
         queryClient.invalidateQueries(["sermons"]);
@@ -143,7 +143,7 @@ const SermonList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         privateInstance
-          .delete(`api/sermons/${sermonId}`)
+          .delete(`/api/sermons/${sermonId}`)
           .then(() => {
             toast.success("Successfully deleted sermon.");
             queryClient.invalidateQueries([

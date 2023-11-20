@@ -14,7 +14,7 @@ const PointItem = () => {
   } = useQuery({
     queryKey: ["points", pointId],
     queryFn: () =>
-      privateInstance.get(`api/points/${pointId}`).then((res) => res.data),
+      privateInstance.get(`/api/points/${pointId}`).then((res) => res.data),
     keepPreviousData: true,
     // refetchInterval: 1000,
   });

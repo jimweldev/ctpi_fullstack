@@ -17,7 +17,7 @@ const SermonItem = () => {
   } = useQuery({
     queryKey: ["sermons", sermonId],
     queryFn: () =>
-      privateInstance.get(`api/sermons/${sermonId}`).then((res) => res.data),
+      privateInstance.get(`/api/sermons/${sermonId}`).then((res) => res.data),
     keepPreviousData: true,
     // refetchInterval: 1000,
   });

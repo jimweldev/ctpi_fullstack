@@ -24,7 +24,7 @@ const VerseCard = ({ sermonVerse, handleEditSermonVerse }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         privateInstance
-          .delete(`api/verses/${sermonId}`)
+          .delete(`/api/verses/${sermonId}`)
           .then(() => {
             toast.success("Successfully deleted sermon.");
             queryClient.invalidateQueries(["verses"]);

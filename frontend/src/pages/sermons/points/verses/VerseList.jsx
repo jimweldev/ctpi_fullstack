@@ -32,7 +32,7 @@ const VerseList = ({ pointId }) => {
     };
 
     privateInstance
-      .post(`api/verses`, modifiedData)
+      .post(`/api/verses`, modifiedData)
       .then(() => {
         toast.success("Successfully created verse.");
         queryClient.invalidateQueries(["verses"]);

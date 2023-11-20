@@ -16,7 +16,7 @@ const PointList = ({ sermonId }) => {
     queryKey: ["points", sermonId],
     queryFn: () =>
       privateInstance
-        .get(`api/points?sermonId=${sermonId}&sort=order`)
+        .get(`/api/points?sermonId=${sermonId}&sort=order`)
         .then((res) => res.data),
     keepPreviousData: true,
     // refetchInterval: 1000,
@@ -30,7 +30,7 @@ const PointList = ({ sermonId }) => {
     };
 
     privateInstance
-      .post(`api/points`, modifiedData)
+      .post(`/api/points`, modifiedData)
       .then(() => {
         toast.success("Successfully created point.");
         queryClient.invalidateQueries(["points"]);
@@ -50,7 +50,7 @@ const PointList = ({ sermonId }) => {
 
   const handleUpdateSermonPoint = async (data) => {
     privateInstance
-      .patch(`api/points/${data._id}`, data)
+      .patch(`/api/points/${data._id}`, data)
       .then(() => {
         toast.success("Successfully updated sermon point.");
         queryClient.invalidateQueries(["points"]);

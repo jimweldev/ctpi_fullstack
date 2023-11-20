@@ -27,7 +27,7 @@ const SermonCard = ({ sermon, handleEditSermon }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         privateInstance
-          .delete(`api/sermons/${sermonId}`)
+          .delete(`/api/sermons/${sermonId}`)
           .then(() => {
             toast.success("Successfully deleted sermon.");
             queryClient.invalidateQueries(["sermons"]);

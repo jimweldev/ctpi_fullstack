@@ -18,7 +18,7 @@ const ClosingList = ({ sermonId }) => {
     queryKey: ["closings", sermonId],
     queryFn: () =>
       privateInstance
-        .get(`api/closings?sermonId=${sermonId}&sort=order`)
+        .get(`/api/closings?sermonId=${sermonId}&sort=order`)
         .then((res) => res.data),
     keepPreviousData: true,
     // refetchInterval: 1000,
@@ -32,7 +32,7 @@ const ClosingList = ({ sermonId }) => {
     };
 
     privateInstance
-      .post(`api/closings`, modifiedData)
+      .post(`/api/closings`, modifiedData)
       .then(() => {
         toast.success("Successfully created closing.");
         queryClient.invalidateQueries(["closings"]);
@@ -52,7 +52,7 @@ const ClosingList = ({ sermonId }) => {
 
   const handleUpdateSermonClosing = async (data) => {
     privateInstance
-      .patch(`api/closings/${data._id}`, data)
+      .patch(`/api/closings/${data._id}`, data)
       .then(() => {
         toast.success("Successfully updated sermon closing.");
         queryClient.invalidateQueries(["closings"]);

@@ -33,7 +33,7 @@ const SeriesList = () => {
     queryFn: () =>
       privateInstance
         .get(
-          `api/series/paginated?page=${page}&limit=${limit}&sort=${sort}&search=${debouncedSearchTerm}`
+          `/api/series/paginated?page=${page}&limit=${limit}&sort=${sort}&search=${debouncedSearchTerm}`
         )
         .then((res) => res.data),
     keepPreviousData: true,
@@ -59,7 +59,7 @@ const SeriesList = () => {
 
   const handleAddSeries = async (data) => {
     privateInstance
-      .post(`api/series`, data)
+      .post(`/api/series`, data)
       .then(() => {
         toast.success("Successfully created series.");
         queryClient.invalidateQueries(["series"]);
@@ -82,7 +82,7 @@ const SeriesList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         privateInstance
-          .delete(`api/series/${seriesId}`)
+          .delete(`/api/series/${seriesId}`)
           .then(() => {
             toast.success("Successfully deleted series.");
             queryClient.invalidateQueries([

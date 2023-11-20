@@ -18,7 +18,7 @@ const OpeningList = ({ sermonId }) => {
     queryKey: ["openings", sermonId],
     queryFn: () =>
       privateInstance
-        .get(`api/openings?sermonId=${sermonId}&sort=order`)
+        .get(`/api/openings?sermonId=${sermonId}&sort=order`)
         .then((res) => res.data),
     keepPreviousData: true,
     // refetchInterval: 1000,
@@ -32,7 +32,7 @@ const OpeningList = ({ sermonId }) => {
     };
 
     privateInstance
-      .post(`api/openings`, modifiedData)
+      .post(`/api/openings`, modifiedData)
       .then(() => {
         toast.success("Successfully created opening.");
         queryClient.invalidateQueries(["openings"]);
@@ -52,7 +52,7 @@ const OpeningList = ({ sermonId }) => {
 
   const handleUpdateSermonOpening = async (data) => {
     privateInstance
-      .patch(`api/openings/${data._id}`, data)
+      .patch(`/api/openings/${data._id}`, data)
       .then(() => {
         toast.success("Successfully updated sermon opening.");
         queryClient.invalidateQueries(["openings"]);
